@@ -99,15 +99,16 @@ function selectedAmount(items, itemsChosen) {
       message: "How many of selected item " + item + " would you like?"
     }
   ]).then(function (amountIs) {
-    console.log(amountIs.amount);
-    console.log("Quantity is: " + itemQuantity);
+    console.log("Quantity selected is: " + amountIs.amount + "\n");
+    // console.log(amountIs.amount);
+    console.log("Available quantity is: " + itemQuantity);
     if (amountIs.amount > itemQuantity) {
-      console.log("Sorry, this item is sold out.");
+      console.log("Sorry, insufficient quantity!");
     }
     else {
       itemQuantity -= amountIs.amount;
       let total = amountIs.amount * itemCost;
-      console.log("Total amount due is $ " + total);
+      console.log("Total amount due is $ " + total + "\n");
       
     }
     updateProduct(itemQuantity, itemsChosen);
@@ -123,7 +124,7 @@ function updateProduct(itemQuantity, itemsChosen) {
   var totalQ = quanTotal - itemsId;
 
 
-  console.log("amount remaining " + quanTotal);
+  console.log("Quantity amount remaining " + quanTotal);
 
 
   console.log("Updating all product quantities...\n");
